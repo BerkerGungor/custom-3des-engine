@@ -86,3 +86,39 @@ def bits_to_bytes(bits: List[int]) -> bytes:
 def xor_bits(a: List[int], b: List[int]) -> List[int]:
     """Performs bitwise XOR between two equal-length lists of bits."""
     return [x ^ y for x, y in zip(a, b)]
+
+
+def pkcs7_pad(data: bytes, block_size: int = 8) -> bytes:
+    """Pads data to a multiple of block_size using PKCS#7 standard."""
+    pad_len = block_size - (len(data) % block_size)
+    return data + bytes([pad_len] * pad_len)
+
+
+def pkcs7_unpad(data: bytes) -> bytes:
+    """Validates and strips PKCS#7 padding from decrypted data."""
+    if not data:
+        raise ValueError("Cannot unpad empty data.")
+    pad_len = data[-1]
+    if pad_len == 0 or pad_len > 8:
+        raise ValueError("Invalid PKCS#7 padding value.")
+    if data[-pad_len:] != bytes([pad_len] * pad_len):
+        raise ValueError("Corrupted PKCS#7 padding bytes.")
+    return data[:-pad_len]
+
+
+def pkcs7_pad(data: bytes, block_size: int = 8) -> bytes:
+    """Pads data to a multiple of block_size using PKCS#7 standard."""
+    pad_len = block_size - (len(data) % block_size)
+    return data + bytes([pad_len] * pad_len)
+
+
+def pkcs7_unpad(data: bytes) -> bytes:
+    """Validates and strips PKCS#7 padding from decrypted data."""
+    if not data:
+        raise ValueError("Cannot unpad empty data.")
+    pad_len = data[-1]
+    if pad_len == 0 or pad_len > 8:
+        raise ValueError("Invalid PKCS#7 padding value.")
+    if data[-pad_len:] != bytes([pad_len] * pad_len):
+        raise ValueError("Corrupted PKCS#7 padding bytes.")
+    return data[:-pad_len]
