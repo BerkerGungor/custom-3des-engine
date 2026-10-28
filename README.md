@@ -1,6 +1,6 @@
 # Custom 3DES Cryptography Engine
 
-A modular Python implementation of the Triple Data Encryption Standard (3DES) running in Electronic Codebook (ECB) mode. This project demonstrates applied cryptography principles by implementing the core DES components from scratch, avoiding reliance on high-level security libraries.
+A modular Python implementation of the Triple Data Encryption Standard (3DES) running in Electronic Codebook (ECB) mode. .cThis project demonstrates applied cryptography principles by implementing the core DES components from scratch, avoiding reliance on high-level security libraries.
 
 ## Architecture
 This tool applies the standard DES algorithm three consecutive times per block, utilizing the encrypt-decrypt-encrypt sequence with independent keys to drastically enhance the security margin against brute-force attacks compared to standard DES.
